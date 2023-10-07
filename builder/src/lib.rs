@@ -26,9 +26,32 @@ pub fn derive(input: TokenStream) -> TokenStream {
         _ => panic!("expects struct"),
     };
 
+    let checks = idents.iter().map(|ident| {
+        let err = format!("Required field '{}' is missing", ident.to_string());
+        quote! {
+            if self.#ident.is_none() {
+                return Err(#err.into())
+            }
+        }
+    });
+
     let expand = quote! {
         #vis struct #builder_name {
            #(#idents: Option<#types>),*
+        }
+
+        impl #builder_name {
+            #(pub fn #idents(&mut self, #idents: #types) -> &mut Self {
+                self.#idents = Some(#idents);
+                self
+            })*
+
+            pub fn build(&mut self) -> Result<#ident, Box<dyn std::error::Error>> {
+                #(#checks)*
+                Ok(#ident {
+                    #(#idents: self.#idents.clone().unwrap()),*
+                })
+            }
         }
 
         impl #ident {
