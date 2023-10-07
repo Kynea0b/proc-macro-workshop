@@ -12,6 +12,10 @@ proc-macro = true
 name = "tests"
 path = "tests/progress.rs"
 
+[[bin]]
+name = "main"
+path = "src/main.rs"
+
 [dev-dependencies]
 trybuild = { version = "1.0.49", features = ["diff"] }
 
