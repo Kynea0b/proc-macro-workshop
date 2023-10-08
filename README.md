@@ -469,4 +469,5 @@ shall be dual licensed as above, without any additional terms or conditions.
 ## Links
 superior implementation:
 https://github.com/jonhoo/proc-macro-workshop
-
+https://zenn.dev/magurotuna/articles/bab4db5999ebfa
+https://github.com/WhoisDavid/rust-learnings/tree/master

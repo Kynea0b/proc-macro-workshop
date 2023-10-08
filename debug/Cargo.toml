@@ -20,6 +20,6 @@ name = "main"
 path = "src/main.rs"
 
 [dependencies]
-proc-macro2 = "1.0.10"
+proc-macro2 = { workspace = true }
 syn = "1.0.17"
 quote = "1.0.3"
