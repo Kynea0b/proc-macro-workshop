@@ -1,4 +1,3 @@
-
 use derive_builder::Builder;
 
 #[derive(Builder)]
@@ -10,12 +9,10 @@ pub struct Command {
 }
 
 fn main() {
-	println!("hello");
-	let mut builder = Command::builder();
+    println!("hello");
+    let mut builder = Command::builder();
     builder.executable("cargo".to_owned());
     builder.args(vec!["build".to_owned(), "--release".to_owned()]);
     builder.env(vec![]);
     builder.current_dir("..".to_owned());
-
-	
 }
