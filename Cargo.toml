@@ -5,6 +5,7 @@ edition = "2021"
 publish = false
 
 [workspace]
+members = ["builder"]
 
 [[bin]]
 name = "workshop"
@@ -16,3 +17,7 @@ derive_builder = { path = "builder" }
 derive_debug = { path = "debug" }
 seq = { path = "seq" }
 sorted = { path = "sorted" }
+
+[workspace.dependencies]
+syn = { version = "1.0.86", features = ["extra-traits"] }
+quote = "1.0.15"
